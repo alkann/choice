@@ -1,0 +1,86 @@
+<body bgcolor="#FFFFFF">
+<table class="body-wrap">
+    <tbody>
+    <tr>
+        <td class="container" bgcolor="#FFFFFF">
+            <div class="content">
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <h3>Witaj {{ user.name }}</h3>
+
+                            <p>Dziękujemy za złożenie zamówienia</p>
+                            <p>Twoje zamówienie zostało przyjęte do realizacji a potwierdzenie wysłane zostało na podany podczas składania zamówienia adres e-mail.</p>
+
+                            <p>Wysyłka na adres:</p>
+                            {{ user.name }} {{ user.surname }}<br>
+                            {{ user.street }} {{ user.nr }}<br>
+                            {{ user.city }} {{ user.postcode }}<br>
+
+                            {% if user.prepaid < 20%}
+                            <p>Wybrałeś opcję PRZEDPŁATY</p>
+                            <p>Oczekujemy na przelew od Ciebie</p>
+                            <p>Nr konta bankowego:</p>
+                            <p><strong>67 1050 1575 1000 0092 2301 4425</strong></p>
+                            <p>Odbiorca:</p>
+                            <p><strong>CSD Arkadiusz Musielewski, ul. Kłodzka 9/16, 50-536 Wrocław</strong></p>
+                            <p>W tytule przelewu wpisz :"Zamówienie NR {{  user.order_nr}}</p>
+                            <p>Kwota {{  user.price}}.00 PLN</p>
+                            {% else %}
+                                <p>Wybrałeś opcję PŁATNOŚĆ PRZY ODBIORZE</p>
+                                <p>Zostaniesz poinformowany o wysyłce</p>
+                                <p>
+                                    <br><br>
+                                    <b>Do zapłaty: {{  user.price}}.00 PLN</b><br>
+                                    <b>Nr zamówienia: {{  user.order_nr}}</b>
+                                </p>
+                            {% endif %}
+                            <p></p>
+
+                            <p>Zapraszamy do dalszych zakupów.</p>
+                            <p style="margin-top: 20px">Zespół Choice</p>
+
+                            <table class="social" width="100%">
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <table>
+                                            <tbody><tr>
+                                                <td>
+                                                    <h5 class="">Owiedź nas na:</h5>
+                                                    <p class="">
+                                                        <a href="https://www.facebook.com/choiceunderwear/" class="soc-btn fb">Facebook</a><br>
+                                                        <a href="https://twitter.com/choiceunderwear" class="soc-btn tw">Twitter</a><br>
+                                                        <a href="https://www.instagram.com/choiceunderwear/" class="soc-btn gp">Instagram</a><br>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table align="left" class="column">
+                                            <tbody><tr>
+                                                <td>
+                                                    <p>Email: <strong><a href="emailto:kontakt@choiceunderwear.pl">kontakt@choiceunderwear.pl</a></strong></p>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>

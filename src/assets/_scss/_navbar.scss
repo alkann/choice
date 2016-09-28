@@ -1,0 +1,72 @@
+.navbar{
+  padding: 10px 0;
+  background-image: url("../img/header.jpg");
+  background-size: cover;
+  width: 100%;
+  z-index: 1;
+  color: $navbar-color;
+  -webkit-box-shadow: 0 0 20px 0 rgba(0,0,0,0.41);
+  -moz-box-shadow: 0 0 20px 0 rgba(0,0,0,0.41);
+  box-shadow: 0 0 20px 0 rgba(0,0,0,0.41);
+  height: $navbar-heignt;
+
+  &__logo, &__list{
+    display: inline-block;
+  }
+
+  &__logo{
+    float: left;
+    margin-left: 10px;
+    padding: 5px;
+    a, a:hover, a:active, a:visited{
+      text-decoration: none;
+      color: $navbar-color;
+    }
+    i{
+      font-size: $navbar-logo-size;
+      cursor: pointer;
+    }
+    &:hover{
+      i{
+        text-shadow: 0 0 4px rgba($navbar-color, 1);
+      }
+    }
+  }
+
+  &__list{
+    float: right;
+  }
+
+  &__menu{
+    padding: 0;
+    margin: 0 10px 0 0;
+
+    li{
+      list-style: none;
+      display: inline-block;
+      padding: 10px;
+      font-size: $navbar-font-size;
+      text-transform: $navbar-texttransform;
+      line-height: 1;
+      cursor: pointer;
+      a, a:hover, a:active, a:visited{
+        text-decoration: none;
+        color: $navbar-color;
+      }
+
+      span{
+        position: relative;
+        top: -$navbar-font-size/10;
+      }
+      i{
+        font-size: $navbar-icon-size;
+      }
+
+      &:hover{
+        i, span{
+          text-shadow: 0 0 4px rgba($navbar-color, 1);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,134 @@
+@font-face {
+  font-family: "icons";
+  src: url('../fonts/icons.eot');
+  src: url('../fonts/icons.eot?#iefix') format('eot'),
+  url('../fonts/icons.woff2') format('woff2'),
+  url('../fonts/icons.woff') format('woff'),
+  url('../fonts/icons.ttf') format('truetype'),
+  url('../fonts/icons.svg#icons') format('svg');
+}
+
+@mixin icon-styles {
+  font-family: "icons";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  // speak: none; // only necessary if not using the private unicode range (firstGlyph option)
+  text-decoration: none;
+  text-transform: none;
+}
+
+%icon {
+  @include icon-styles;
+}
+
+@function icon-char($filename) {
+  $char: "";
+
+  @if $filename == add-to-cart {
+  $char: "\E001";
+}
+  @if $filename == add {
+  $char: "\E002";
+}
+  @if $filename == choice {
+  $char: "\E003";
+}
+  @if $filename == create-group-button {
+  $char: "\E004";
+}
+  @if $filename == facebook-logo {
+  $char: "\E005";
+}
+  @if $filename == google-plus {
+  $char: "\E006";
+}
+  @if $filename == hospitals-computer {
+  $char: "\E007";
+}
+  @if $filename == information {
+  $char: "\E008";
+}
+  @if $filename == instagram-symbol {
+  $char: "\E009";
+}
+  @if $filename == interface {
+  $char: "\E00A";
+}
+  @if $filename == login {
+  $char: "\E00B";
+}
+  @if $filename == minus {
+  $char: "\E00C";
+}
+  @if $filename == shopping-cart {
+  $char: "\E00D";
+}
+  @if $filename == twitter {
+  $char: "\E00E";
+}
+  @if $filename == user-shape {
+  $char: "\E00F";
+}
+
+@return $char;
+}
+
+@mixin icon($filename, $insert: before, $extend: true) {
+&:#{$insert} {
+  @if $extend {
+    @extend %icon;
+  } @else {
+    @include icon-styles;
+  }
+  content: icon-char($filename);
+}
+}
+
+.icon-add-to-cart {
+  @include icon(add-to-cart);
+}
+.icon-add {
+  @include icon(add);
+}
+.icon-choice {
+  @include icon(choice);
+}
+.icon-create-group-button {
+  @include icon(create-group-button);
+}
+.icon-facebook-logo {
+  @include icon(facebook-logo);
+}
+.icon-google-plus {
+  @include icon(google-plus);
+}
+.icon-hospitals-computer {
+  @include icon(hospitals-computer);
+}
+.icon-information {
+  @include icon(information);
+}
+.icon-instagram-symbol {
+  @include icon(instagram-symbol);
+}
+.icon-interface {
+  @include icon(interface);
+}
+.icon-login {
+  @include icon(login);
+}
+.icon-minus {
+  @include icon(minus);
+}
+.icon-shopping-cart {
+  @include icon(shopping-cart);
+}
+.icon-twitter {
+  @include icon(twitter);
+}
+.icon-user-shape {
+  @include icon(user-shape);
+}

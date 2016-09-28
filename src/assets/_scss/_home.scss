@@ -1,0 +1,87 @@
+.home{
+  overflow: hidden;
+  &__section{
+    min-height: 100vh;
+    z-index: 0;
+    background: #fff;
+    padding: $home-section-padding 0;
+    padding-top: $home-section-padding + $navbar-heignt;
+
+    &:first-child{
+      min-height: 100vh;
+      padding-top: $home-section-padding + $navbar-heignt + 60px;
+    }
+
+    &--right{
+      text-align: right;
+    }
+    &--left{
+      text-align: left;
+    }
+
+    &--poland{
+      h1{
+        color: #fff;
+        span{
+          color: #ff4641
+        }
+      }
+
+      h4{
+        color: #ddd;
+      }
+
+      .btn{
+        border-color: #fff;
+        color: #fff;
+
+        &:hover{
+          border-color: #fff;
+          background: #fff;
+          color: #555;
+        }
+      }
+    }
+
+  }
+
+  &__btn{
+    margin-top: 70px;
+  }
+}
+
+#section-0{
+  background: url('../img/section-1-bg.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: -150px ;
+}
+
+#section-1{
+  background: url('../img/section-2-bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: -100px ;
+}
+
+#section-2{
+  background: url('../img/section-3-bg.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: -100px ;
+  opacity: 0;
+}
+
+#section-3{
+   background: url('../img/section-4-bg.jpg');
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position-x: 80% ;
+   opacity: 0;
+ }
+#section-4{
+  background: url('../img/section-5-bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: 0 ;
+}

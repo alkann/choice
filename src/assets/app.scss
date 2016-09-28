@@ -1,0 +1,35 @@
+//Configuration file
+@import "_scss/variables";
+
+//SpriteSVG created from SVG files in icons dir
+@import "sprite/generate-svg";
+
+//FontIcon created from SVG files in icons-mono dir
+@import "_scss/fonts/icons";
+
+//Bootstrap 12 columns grid system
+@import "_scss/basic/reset";
+@import "_scss/basic/grid";
+
+@import "_scss/spinner";
+@import "_scss/typing";
+@import "_scss/layout";
+@import "_scss/btn";
+@import "_scss/navbar";
+@import "_scss/footer";
+@import "_scss/overlay";
+@import "_scss/inputs";
+
+
+@import "_scss/home";
+@import "_scss/sidebar";
+@import "_scss/order";
+@import "_scss/datepicker-base";
+@import "_scss/datepicker-clean";
+@import "responssive";
+
+@import "_scss/fx";
+
+.zeus .tp-bullet{
+  border-color: #666;
+}

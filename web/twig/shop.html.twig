@@ -1,0 +1,233 @@
+{% extends "./basic/base.html.twig" %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="css/store.css">
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="store">
+            <div class="store__section">
+                <div class="container">
+                    <h1 class="store__title"><i class="icon-choice"></i></h1>
+                    <div class="store__overlay">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12">
+                                <div class="store__title--color">
+                                    <h3>SLIPY MĘSKIE</h3>
+                                    <h3 class="js-store-title-color store__title--item transition-all-500" style="opacity: 1; color:#3adce2;">AQUA</h3>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-4">
+                                <div class="slider__spinner">
+                                    <div class="slider js-slider transition-all-500"></div>
+                                    <div class="slider__spinner--block js-slider-spinner-block">
+                                        <div class="spinner">
+                                        <span>
+                                            <div class="b1"></div>
+                                            <div class="b2"></div>
+                                            <div class="b3"></div>
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-8">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-6">
+                                        <div class="store__options">Slipy męskie</div>
+                                        <div class="store__description">
+                                            <p>Fason klasyczny, idealnie dopasowany do ciała.
+                                                Wygodny i elastyczny materiał sprawdzi się przy aktywnym
+                                                trybie życia a to za sprawą tkaniny, która jest zmiękczana,
+                                                silikonowana i kontrolowana na każdym etapie produkcji.
+                                                Logo <span>CHOICE</span> na gumie wyłącznie z przodu slipów.</p>
+                                            <p></p>
+                                            <p>
+                                                <span>Wykonanie:</span><br>
+                                                92% bawełna<br>
+                                                8% elastan
+                                                </p>
+                                            <p>Wyprodukowane i zaprojektowane <span>w Polsce.</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-6">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                <div class="store__options">Rozmiar</div>
+                                                <div class="store__select">
+                                                    <select class="js-select-size">
+                                                        <option data-display="Wybierz"></option>
+                                                        <option value="1">S</option>
+                                                        <option value="2">M</option>
+                                                        <option value="3">L</option>
+                                                        <option value="4">XL</option>
+                                                    </select>
+                                                </div>
+                                                <div class="store__moreinformation js-overlay" data-description="rozmiary"><i class="icon-information"></i> Sprawdź swój rozmiar</div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                <div class="store__options">Kolor</div>
+                                                <div class="store__colors js-store-colors">
+                                                    <ul>
+                                                        <li class="store__colors--item transition-all-500">
+                                                            <div class="store__colors--link js-colors-inner" data-color="#3adce2" data-title="aqua" data-color-id="1"></div>
+                                                        </li>
+                                                        <li class="store__colors--item transition-all-500">
+                                                            <div class="store__colors--link js-colors-inner" data-color="#ff001d" data-title="chili" data-color-id="2"></div>
+                                                        </li>
+                                                        <li class="store__colors--item transition-all-500">
+                                                            <div class="store__colors--link js-colors-inner" data-color="#713a2c" data-title="coffee" data-color-id="3"></div>
+                                                        </li>
+                                                        <li class="store__colors--item transition-all-500">
+                                                            <div class="store__colors--link js-colors-inner" data-color="#00c79d" data-title="green" data-color-id="4"></div>
+                                                        </li>
+                                                        <li class="store__colors--item transition-all-500">
+                                                            <div class="store__colors--link js-colors-inner" data-color="#252548" data-title="ink" data-color-id="5"></div>
+                                                        </li>
+                                                        <li class="store__colors--item transition-all-500">
+                                                            <div class="store__colors--link js-colors-inner" data-color="#d6e739" data-title="kiwi" data-color-id="6"></div>
+                                                        </li>
+                                                        <li class="store__colors--item transition-all-500">
+                                                            <div class="store__colors--link js-colors-inner" data-color="#ff5c00" data-title="orange" data-color-id="7"></div>
+                                                        </li>
+                                                        <li class="store__colors--item transition-all-500">
+                                                            <div class="store__colors--link js-colors-inner" data-color="#fe2960" data-title="semisweet" data-color-id="8"></div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-8">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                <h2 style="margin-top: 20px">Rozmiary</h2>
+                                                <div>
+                                                    <div class="col-sm-12 col-xs-12">
+                                                        <div class="row">
+                                                            <div class="col-sm-4 col-xs-12">
+                                                                <img src="./foto/size.jpg" width="100%">
+                                                            </div>
+                                                            <div class="col-sm-8 col-xs-12">
+                                                                <table style="width:100%" class="store__table">
+                                                                    <tr>
+                                                                        <th>Rozmiar/Size</th>
+                                                                        <th class="store__table--red">Obwód cm (A)</th>
+                                                                        <th>Wysokość cm(B)</th>
+                                                                        <th>Długosć boku cm (C)</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>S</td>
+                                                                        <td class="store__table--red">70-76</td>
+                                                                        <td class="store__table--green">23</td>
+                                                                        <td class="store__table--blue">10,5</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>M</td>
+                                                                        <td class="store__table--red">77-86</td>
+                                                                        <td class="store__table--green">25</td>
+                                                                        <td class="store__table--blue">11</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>L</td>
+                                                                        <td class="store__table--red">87-96</td>
+                                                                        <td class="store__table--green">27</td>
+                                                                        <td class="store__table--blue">11,5</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>XL</td>
+                                                                        <td class="store__table--red">97-106</td>
+                                                                        <td class="store__table--green">29</td>
+                                                                        <td class="store__table--blue">12</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                <div class="store__price pull-right">
+                                                    <h4>69<span class="value">PLN</span></h4>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                <div class="store__btn">
+                                                    <button class="btn btn--grey transition-all-500 pull-right js-add-product js-count-operation">Dodaj do koszyka</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block description %}
+    <div id="rozmiary">
+        <h1>Rozmiary</h1>
+        <div>
+            <div class="col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="col-sm-4 col-xs-12">
+                        <img src="./foto/size.jpg" width="100%">
+                    </div>
+                    <div class="col-sm-8 col-xs-12">
+                        <table style="width:100%" class="store__table">
+                            <tr>
+                                <th>Rozmiar/Size</th>
+                                <th class="store__table--red">Obwód cm (A)</th>
+                                <th>Wysokość cm(B)</th>
+                                <th>Długosć boku cm (C)</th>
+                            </tr>
+                            <tr>
+                                <td>S</td>
+                                <td class="store__table--red">70-76</td>
+                                <td class="store__table--green">23</td>
+                                <td class="store__table--blue">10,5</td>
+                            </tr>
+                            <tr>
+                                <td>M</td>
+                                <td class="store__table--red">77-86</td>
+                                <td class="store__table--green">25</td>
+                                <td class="store__table--blue">11</td>
+                            </tr>
+                            <tr>
+                                <td>L</td>
+                                <td class="store__table--red">87-96</td>
+                                <td class="store__table--green">27</td>
+                                <td class="store__table--blue">11,5</td>
+                            </tr>
+                            <tr>
+                                <td>XL</td>
+                                <td class="store__table--red">97-106</td>
+                                <td class="store__table--green">29</td>
+                                <td class="store__table--blue">12</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="scripts/fotorama.js"></script>
+    <script src="scripts/jquery.nice-select.min.js"></script>
+    <script src="scripts/store.js"></script>
+{% endblock %}

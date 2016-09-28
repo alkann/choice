@@ -1,0 +1,96 @@
+<body bgcolor="#FFFFFF">
+<table class="body-wrap">
+    <tbody>
+    <tr>
+        <td class="container" bgcolor="#FFFFFF">
+            <div class="content">
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <h3>Witaj Choice</h3>
+                            <p>Użytkownik {{ user.name }} {{ user.surname }} złozyłcwłaśnie zamównie</p>
+                            <p>Skład zamówienia:</p>
+                            <table style="width:100%">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Produkt</th>
+                                    <th>Rozmiar</th>
+                                    <th>Kolor</th>
+                                    <th>Szt</th>
+                                </tr>
+                                {% for item in user.order %}
+                                    <tr>
+                                        <td>{{ loop.index }}</td>
+                                        <td>Slipy Męskie</td>
+                                        <td>{{ item[1] }}</td>
+                                        <td>{{ item[3] }}</td>
+                                        <td>{{ item[5] }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+
+                            <p><br><br>
+                                <b>Do zapłaty: {{  user.price}}.00 PLN</b><br>
+                                <b>Nr zamówienia: {{  user.order_nr}}</b><br><br>
+                            </p>
+
+                            <p>Wysyłka na adres:</p>
+                            {{ user.name }} {{ user.surname }}<br>
+                            {{ user.street }} {{ user.nr }}<br>
+                            {{ user.city }} {{ user.postcode }}<br>
+
+                            {% if user.prepaid < 20%}
+                                <p>Opcję PRZEDPŁATA</p>
+                            {% else %}
+                                <p>Opcję PŁATNOŚĆ PRZY ODBIORZE</p>
+                                <p>Wybrałeś opcję PŁATNOŚĆ PRZY ODBIORZE</p>
+                                <p>Zostaniesz poinformowany o wysyłce</p>
+                            {% endif %}
+
+                            <p>Kontakt do użytkownika {{ user.name }} {{ user.surname }}:<br>
+                               <strong>{{ user.email }}</strong></p>
+
+                            <table class="social" width="100%">
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <table>
+                                            <tbody><tr>
+                                                <td>
+                                                    <h5 class="">Owiedź nas na:</h5>
+                                                    <p class="">
+                                                        <a href="https://www.facebook.com/choiceunderwear/" class="soc-btn fb">Facebook</a><br>
+                                                        <a href="https://twitter.com/choiceunderwear" class="soc-btn tw">Twitter</a><br>
+                                                        <a href="https://www.instagram.com/choiceunderwear/" class="soc-btn gp">Instagram</a><br>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table align="left" class="column">
+                                            <tbody><tr>
+                                                <td>
+                                                    <p>Email: <strong><a href="emailto:kontakt@choiceunerwear.pl">kontakt@choiceunerwear.pl</a></strong></p>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>

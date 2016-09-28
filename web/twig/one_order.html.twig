@@ -1,0 +1,43 @@
+<div class="row">
+    <h1>Zamowienie nr {{ order.order_number }}</h1>
+    <div>
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <table style="width:100%" class="order__table">
+                    <tr class="order__table__header">
+                        <th>#</th>
+                        <th>Produkt</th>
+                        <th>Rozmiar</th>
+                        <th>Kolor</th>
+                        <th>Szt</th>
+                    </tr>
+                    {% for item in order.items %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>slipy CHOICE</td>
+                            <td>{{ item.size_name }}</td>
+                            <td>{{ item.color_name }}</td>
+                            <td>{{ item.count_nr }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="col-xs-12 col-sm-12 order__moreinformation">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4">
+                        <h2>Opłacone</h2>
+                        <h2>{% if order.data.is_pade %}TAK{% else %}NIE{% endif %}</h2>
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                        <h2>Wysłane</h2>
+                        <h2>{% if order.data.is_send%}TAK{% else %}NIE{% endif %}</h2>
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                        <h2>Koszt</h2>
+                        <h2 class="order__moreinformation--price">{{ order.data.price }} PLN</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

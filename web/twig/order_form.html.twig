@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col-sm-12 col-xs-12">
+        <form class="js-pay-now ">
+            <input type="hidden" name="try-pay">
+            <div class="order__section--payment">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-8 col-xs-12">
+                                <div class="row">
+                                    <div class="col-sm-12 col-xs-12">
+                                        <h2 class="order__subheader">Płatność</h2>
+                                    </div>
+                                    <div class="col-sm-12 col-xs-12">
+                                        <div class="checkbox--group radio">
+                                            <input type="radio" name="platnosc" data-value="16" id="transport-1" value="16" required class="js-transport-price">
+                                            <label for="transport-1">Przedpłata <span>(16 PLN)</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-xs-12">
+                                        <div class="checkbox--group radio">
+                                            <input type="radio" name="platnosc" data-value="25" id="transport-2" value="20" required class="js-transport-price">
+                                            <label for="transport-2">Za pobraniem <span>(20 PLN)</span></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-xs-12">
+                                <div class="row">
+                                    <div class="col-sm-12 col-xs-12">
+                                        <h2 class="order__subheader">Dostawa</h2>
+                                    </div>
+                                    <div class="col-sm-12 col-xs-12">
+                                        <div class="checkbox--group radio">
+                                            <input type="radio" name="transport" data-value="16" id="transport-3" value="1" required checked>
+                                            <label for="transport-3">DPD</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-12 col-xs-12">
+                                <h2 class="order__subheader order__subheader--right">Zakończ i zapłać</h2>
+                            </div>
+                            <div class="col-sm-12 col-xs-12">
+                                <div class="order__promotion--name"></div>
+                                <div class="order__price order__price--final"><span class="order__promotion__price js-actual-price">{{ price }}</span>PLN</div>
+                            </div>
+                            <div class="col-sm-12 col-xs-12">
+                                <button class="btn btn--login order__btn" type="submit">Zakończ i zapłać</button>
+                                <div style="font-size: 12px;color: #838383;font-weight: 100;text-align: right;margin-top: -10px;margin-bottom: 10px;">Czasowo niedostępna płatność online</div>
+                            </div>
+                            <div class="col-sm-12 col-xs-12">
+                                <div class="order__checkbox checkbox">
+                                    <input type="checkbox" name="email_approve" id="email_approve_checkbox" checked>
+                                    <label for="email_approve_checkbox">Wyrażam zgodę na przetwarzanie moich onformacji w celach promocyjnych</label>
+                                </div>
+                                <div class="order__checkbox checkbox">
+                                    <input type="checkbox" name="terms_conditions" id="terms_conditions_checkbox" required>
+                                    <label for="terms_conditions_checkbox">Informuję że zapoznałem się z <span class="js-overlay-terms" style="font-weight: 500; cursor: pointer; color: #418edd">regulaminem</span>*</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

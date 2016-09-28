@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Choice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- REVOLUTION STYLE SHEETS -->
+    <link rel="stylesheet" type="text/css" href="revolution/settings.css">
+    <!-- REVOLUTION LAYERS STYLES -->
+    <link rel="stylesheet" type="text/css" href="revolution/layers.css">
+
+    <!-- REVOLUTION NAVIGATION STYLES -->
+    <link rel="stylesheet" type="text/css" href="revolution/navigation.css">
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+    {% block css %}{% endblock %}
+    <link rel="stylesheet" type="text/css" href="css/responssive.css">
+</head>
+<body data-price="{{ price }}">
+<header class="header">
+    <div class="navbar clearfix">
+        <div class="navbar__logo">
+            <a href="/">
+                <i class="icon-choice transition-all-500"></i>
+            </a>
+        </div>
+        <div class="navbar__list">
+            <ul class="navbar__menu">
+                <li><a href="shop.php"><span class="transition-all-500">Produkty</span></a></li>
+                <li class="js-market js-sidebar" data-destination="#asside_market"><i class="icon-shopping-cart transition-all-500"></i></li>
+                <li class="js-profile js-sidebar" data-destination="#asside_profile"><i class="icon-user-shape transition-all-500"></i></li>
+            </ul>
+        </div>
+    </div>
+    {% block header %}{% endblock %}
+</header>
+<div class="choice">
+    <div class="choice__app js-choice-app transition-all-500">
+        {% block content %}{% endblock %}
+        <div class="footer">
+            <footer class="clearfix">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h3>Choice</h3>
+                            <ul>
+                                <li class="js-overlay" data-description="regulamin">Regulamin</li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-3">
+                            <h3>Obsługa klienta</h3>
+                            <ul>
+                                <li class="js-overlay" data-description="platnosci">Płatności</li>
+                                <li class="js-overlay" data-description="dostawy">Koszty dostawy</li>
+                                <li class="js-overlay" data-description="wymiana">Wymiana/zwrot</li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-3">
+                            <h3>Dostawa</h3>
+                            <ul>
+                                <li class="js-overlay" data-description="realizacja">Czas realizacji dostawy</li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-3">
+                            <h3 class="footer__logo"><i class="icon-choice"></i></h3>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <div class="footer__downline">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p>Copyright © 2015 Choice. Designed by <a href="http://www.alkann.com">alkann.com</a></p>
+                        </div>
+                        <div class="col-sm-6">
+                            <ul class="social__icon pull-right">
+                                <li><a href="https://www.facebook.com/choiceunderwear/"><i class="icon-facebook-logo"></i></a></li>
+                                <li><a href="https://www.instagram.com/choiceunderwear/"><i class="icon-instagram-symbol"></i></a></li>
+                                <li><a href="https://twitter.com/choiceunderwear"><i class="icon-twitter"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% block footer %}{% endblock %}
+        </div>
+    </div>
+    {% block content_asside %}
+        <aside class="choice__asside js-asside">
+
+            <div id="asside_profile">
+                <div class="form__froup">
+                    {% if login %}
+
+                        <div class="js-profile-content">
+                            <h2>
+                                {% if user.user_name %}
+                                    {{ user.user_name ~ " " ~ user.surname}}
+                                {% else %}
+                                    Profil
+                                {% endif %}
+                            </h2>
+                            <div class="row">
+                                <div class="col-sm-12 col-xs-12"><h3 class="choice__user__title js-user-data-link">Dane użytkownika</h3></div>
+                            </div>
+                            <form class="js-user-data-form choice__user__form choice__user__form--data js-user-data-content transition-all-500" style="height: 0">
+                                <input type="hidden" name="update-data">
+                                <div class="row">
+                                    <div class="col-sm-12 col-xs-12">
+                                        <div class="form__input">
+                                            <input placeholder="Imię" type="text" name="name" value="{{ user.user_name }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-xs-12">
+                                        <div class="form__input">
+                                            <input placeholder="Nazwisko" type="text" name="surname" value="{{ user.surname }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-xs-12">
+                                        <div class="form__input">
+                                            <input placeholder="Ulica" type="text" name="street" value="{{ user.street }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-xs-12">
+                                        <div class="form__input">
+                                            <input placeholder="Nr Domu/Mieszkania" type="text" name="house_nr" value="{{ user.house_nr }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-xs-12">
+                                        <div class="form__input">
+                                            <input placeholder="Miasto" type="text" name="city" value="{{ user.city }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-xs-12">
+                                        <div class="form__input">
+                                            <input placeholder="Kod pocztowy" type="text" name="postcode" value="{{ user.postcode }}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+
+                            <div class="row">
+                                <div class="col-sm-12 col-xs-12"><h3 class="choice__user__title js-user-order-link">Twoje zamowienia</h3></div>
+                            </div>
+                            <div class="js-user-data-form choice__user__form choice__user__form--data js-user-order-content transition-all-500" style="height: 0">
+                                <div>
+                                    {% for item in orders.orders %}
+                                        <div class="js-overlay js-one-order-link choice__user__order transition-all-500" data-order="{{ item.order_id }}" data-description="zamowienia">{{ item.order_number }}</div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+
+
+                            <form class="js-logout-form choice__user__logout">
+                                <input type="hidden" name="try-logout">
+                                <div class="form__btn">
+                                    <button type="submit" class="btn btn--login transition-all-500">Wyloguj</button>
+                                </div>
+                            </form>
+                        </div>
+                    {% else %}
+
+                        <div class="js-profile-content">
+                            <form class="js-login-form">
+                                <input type="hidden" name="try-login">
+                                <div class="form__input">
+                                    <input placeholder="Email" type="email" name="email">
+                                </div>
+                                <div class="form__input">
+                                    <input placeholder="Hasło" type="password" name="pass">
+                                </div>
+                                <div class="form__btn">
+                                    <button type="submit" class="btn btn--login transition-all-500">Zaloguj</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    {% endif %}
+                </div>
+            </div>
+
+            <div id="asside_market">
+                <h2>Twój koszyk</h2>
+                <div class="market js-market-content">
+                    {% set count_g = 0 %}
+                    {% if shop %}
+                        {% for item in shop %}
+                            <div class="market__item transition-all-500 js-market-item-svr"
+                                 data-size-id="{{ item[0] }}"
+                                 data-size="{{ item[1] }}"
+                                 data-color-id="{{ item[2] }}"
+                                 data-color-name="{{ item[3] }}"
+                                 data-color-code="{{ item[4] }}"
+                                 data-count="{{ item[5] }}"
+                                 data-code="{{ item[0] ~ '' ~ item[2]}}"
+                                 data-type="slipy_m"
+                                 style="opacity: 1">
+                                <div class="market__item__name">Slipy Męskie <span class="market__item__size">{{ item[1] }}</span> kolor <span class="market__item__color" style="color:{{ item[4] }}">{{ item[3] }}</span></div>
+                                <div class="market__item__count">
+                                    <div class="js-market-count">{{ item[5] }} szt.</div>
+                                    <div class="pull-right">
+                                        <button class="js-count-operation js-count-add"><i class="icon-add"></i></button>
+                                        <button class="js-count-operation js-count-minus"><i class="icon-minus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {%  endif %}
+                </div>
+                <div class="market__pay js-market-pay choice__user__logout">
+                    <div class="market__price">
+                        <span class="js-global-price js-general-price">{{ price }}</span><span class="valut">PLN</span>
+                    </div>
+                    <div class="form__btn">
+                        <button class="btn btn--login transition-all-500 js-overlay js-chose-order" data-description="zakupy">Do kasy</button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    {% endblock %}
+</div>
+{% if session %}
+    <div class="overlay js-first-overlay"  style="display: block;">
+        <div class="overlay__inner" style="height: 400px; min-height: 0; width: 50%; left: 25%">
+            <h1 class="promotion_h1">
+                Specjalna oferta na <br><span>Dzień Chłopaka</span>
+            </h1>
+            <h2 class="promotion_h2">
+                dla kupujących w dniach 23-30 września<br>
+                2 pary slipów w cenie <span style="text-decoration: line-through">138PLN</span> <span style="color: red">100 PLN</span>
+            </h2>
+            <div class="home__btn">
+                <a class="btn btn--border btn--border--black transition-all-500 pull-right js-first-overlay-btn" href="shop.php">Kup teraz</a>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+<div class="overlay js-overial-box"  style="display: none">
+    <div class="overlay__inner js-overlay-inner">
+    </div>
+</div>
+<div class="overlay js-overial-box-terms" style="display: none">
+        <div class="overlay__inner">
+            <h1>Regulamin sklepu www.choiceunderwear.pl</h1>
+            <div>
+                <p>Sklep internetowy www.choiceunderwear.pl (dalej jako Sklep) jest prowadzony przez firmę CSD Arkadiusz
+                    Musielewski z siedzibą we Wrocławiu, ul. Kłodzka 9/16, 50-536 Wrocław, wpisaną do CEIDG pod numerem REGON
+                    360617747, NIP 665-284-42-76 (dalej jako Usługodawca).
+                    CSD Arkadiusz Musielewski jest właścicielem i oficjalnym przedstawicielem marki CHOICE. Sprzedaż, promocja
+                    oraz wykorzystanie nazwy, loga, zdjęć lub materiałów promocyjnych bez pisemnej zgody CSD Arkadiusz Musielewski
+                    jest zabronione.</p>
+
+                <h2>§1. Postanowienia ogólne:</h2>
+                <p><br><br>1. Niniejszy Regulamin określa zasady korzystania ze Sklepu dostępnego pod adresem www.choiceunderwear.pl ,
+                    który prowadzi sprzedaż detaliczną męskiej bielizny marki CHOICE za pośrednictwem sieci Internet.<br><br>
+                    2. W ramach wymagań technicznych niezbędnych do współpracy z systemem teleinformatycznym, którym posługuję
+                    się Usługodawca w celu realizacji zakupów, Klient powinien dysponować aktywnym kontem poczty elektronicznej
+                    (e-mail) oraz urządzeniem podłączonym do sieci Internet, spełniającym następujące minimalne wymagania techniczne:
+                    strona wspiera dwie najnowsze wersje wymienionych poniżej przeglądarek, posiadających włączoną technologię JavaScript
+                    i pliki Cookies: Google Chrome, Mozilla Firefox, Microsoft Edge / Internet Explorer, Opera, Safari.  Uwaga: Strona
+                    nie będzie funkcjonowała poprawnie na przeglądarkach Chrome 23, Firefox 23, Internet Explorer 9, Safari 6 lub
+                    na ich starszych wersjach. Konieczne będzie zaktualizowanie przeglądarki w celu korzystania ze sklepu. Wymagany
+                    system operacyjny: Windows 7 Service Pack 2 lub nowsze, MacOS 1.07 Lion lub nowsze, iOS 7 lub nowsze, Android 4 lub nowsze.</p>
+
+                <h2>§2. Zamówienia:</h2>
+                <p><br><br>1. Do złożenia zamówienia Klient musi zaakceptować Regulamin oraz wypełnić formularz zamówienia.<br><br>
+                    2. Zamówienia od Klienta są przyjmowane przez Sklep przez całą dobę. Zamówienia złożone w dni robocze po
+                    godzinie 19.00, w soboty, niedziele oraz święta rozpatrywane będą od godziny 9.00 następnego dnia roboczego.
+                    Sklep realizuje zamówienia na terenie Polski.<br><br>
+                    3. Informacje o towarach prezentowane na stronie www.choiceunderwear.pl nie stanowią oferty w rozumieniu
+                    art.66 Kodeksu cywilnego, lecz są wyłącznie zaproszeniem do składania ofert.<br><br>
+                    4. Klient, przesyłając do Sklepu zamówienie, składa ofertę zawarcia umowy sprzedaży zamawianych towarów w
+                    Sklepie. Wysłane przez Sklep potwierdzenie przyjęcia zamówienia na podany przez Klienta adres e-mail stanowi
+                    oświadczenie o przyjęciu oferty, o której mowa powyżej i stanowi jednocześnie potwierdzenie zawarcia umowy pomiędzy Klientem a Usługodawcą.<br><br>
+                    5. W sprawach dotyczących zamówienia Sklep będzie kontaktował się z Klientem telefonicznie na numer podany
+                    przy składaniu zamówienia lub w formie korespondencji elektronicznej na adres e-mail podany przy składaniu zamówienia.<br><br>
+                    6. W przypadku niedostępności produktu oferowanego w Sklepie i zamówionego przez Klienta, Sklep poinformuje
+                    o tym niezwłocznie Klienta w treści wysłanej korespondencji elektronicznej.<br><br>
+                    7. Sklep ma prawo odmówić przyjęcia zamówienia, ograniczyć sposób płatności lub żądać przedpłaty w przypadku,
+                    gdy zamówienie budzi wątpliwości co do prawdziwości i rzetelności podanych danych bądź sposobu zapłaty.<br><br>
+                    8. Zmiana w zamówieniu lub jego anulowanie może być dokonane najpóźniej do momentu przekazania zamówienia do
+                    wysyłki. Warunkiem wprowadzenia zmian w zamówieniu jest potwierdzenie za pośrednictwem e-maila prawidłowości
+                    przesłanych przez Sklep zmian w zamówieniu.</p>
+
+                <h2>§3. Płatność i dostawa:</h2>
+                <p><br><br>1. Realizacja zamówienia następuje po potwierdzeniu otrzymania płatności na rachunek bankowy Usługodawcy w
+                    przypadku płatności w inny sposób niż za pobraniem. W przypadku płatności za pobraniem realizacja następuje
+                    niezwłocznie po złożeniu zamówienia przez Klienta.<br><br>
+                    2. Dostępne sposoby płatności oraz koszty dostawy określone są w zakładce Płatność.<br><br>
+                    3. Klient, który wybrał opcję płatności przelewem, jest zobowiązany do uiszczenia opłaty za złożone zamówienie
+                    w terminie do 3 dni roboczych od daty złożenia zamówienia. W przeciwnym wypadku oferta Sklepu nie jest wiążąca
+                    i zamówienie zostaje anulowane, o czym Klient zostanie poinformowany na wskazany przez siebie adres e-mail.<br><br>
+                    4. Bezpośrednio po dokonaniu płatności albo wyborze sposobu płatności za pobraniem, Klient otrzymuje za pośrednictwem
+                    poczty e-mail potwierdzenie nadania przesyłki.<br><br>
+                    5. Przesyłka zawiera zamówiony towar wraz z paragonem fiskalnym lub, na życzenie Klienta, fakturą VAT.<br><br>
+                    6. Zamówiony towar Sklep wysyła za pośrednictwem firmy wysyłkowej DPD.<br><br>
+                    7. Czas realizacji zamówienia wynosi od 2 do 3 dni roboczych i jest uzależniony od dostępności danego produktu oraz
+                    wybranej formy płatności.<br><br>
+                    8. W przypadku, gdy Klient wprowadza zmiany w zamówieniach, powyższy termin biegnie na nowo od dnia potwierdzenia
+                    zmiany przez Klienta.<br><br>
+                    9. Klient, odbierając przesyłkę z zamówieniem, powinien sprawdzić stan przesyłki. W przypadku stwierdzenia zniszczenia
+                    lub naruszenia opakowania istnieje możliwość sporządzenia protokołu szkody w obecności kuriera. Protokół szkody przesłany
+                    do Sklepu wraz z reklamacją ułatwi jej rozpatrzenie.</p>
+
+                <h2>§4. Odstąpienie od umowy:</h2>
+                <p><br><br>1. Konsument, który zawarł umowę na odległość, ma prawo do odstąpienia od umowy bez podania przyczyny, składając stosowne
+                    oświadczenie na piśmie w ciągu 14 dni. Termin ten jest terminem nieprzekraczalnym i liczy się od dnia wydania rzeczy.
+                    Do zachowania tego terminu wystarczy wysłanie oświadczenia przed jego upływem na adres siedziby Usługodawcy.<br><br>
+                    2. Zwrot powinien nastąpić niezwłocznie, nie później niż w terminie 14 dni. Zakupiony towar należy zwrócić Usługodawcy,
+                    do zachowania tego terminu wystarczy wysłanie towaru przed jego upływem na adres Sklepu.<br><br>
+                    3. Zwrot dokonanych przez Klienta płatności następuje niezwłocznie, nie później niż w terminie 14 dni od otrzymania oświadczenia
+                    o odstąpieniu od umowy. W przypadku odstąpienia od umowy Klientowi przysługuje zwrot poniesionych pierwotnie kosztów dostawy
+                    zakupionego towaru, jednak w kwocie nie wyższej niż koszt oferowanego przez Sklep najtańszego zwykłego sposobu dostarczenia
+                    rzeczy. Za datę dokonania zwrotu płatności uznaje się datę obciążenia rachunku bankowego Usługodawcy.</p>
+
+                <h2>§5. Reklamacje:</h2>
+                <p><br><br>1. Sklep zobowiązuje się do dostarczenia zamówionego towaru bez wad, w terminach określonych powyżej.<br><br>
+                    2. Za wadliwy towar odpowiada Sklep w ciągu 24 miesięcy od daty doręczenia przesyłki.<br><br>
+                    3. Klient zobowiązany jest do odesłania na własny koszt wadliwego towaru na adres Sklepu.<br><br>
+                    4. W przypadku uznania reklamacji, Sklep zwraca Klientowi koszt dostarczenia towaru. Koszt odesłania produktu do Klienta ponosi Sklep.<br><br>
+                    5. Termin na ustosunkowanie się do reklamacji wynosi 14 dni. Brak ustosunkowania się w tym terminie oznacza uznanie reklamacji za uzasadnioną.</p>
+
+                <h2>§6. Polityka prywatności oraz ochrona danych osobowych:</h2>
+                <p><br><br>1. Przed złożeniem zamówienia Klient wyraża zgodę na przetwarzanie podanych danych osobowych przez Usługodawcę w celu
+                    realizacji zamówienia. Podanie danych osobowych i wyrażenie zgody na ich przetwarzanie jest dobrowolne, jednak konieczne
+                    w celu zawarcia i realizacji umowy sprzedaży oraz świadczenia usług.<br><br>
+                    2. Dane osobowe wykorzystywane są w celu realizacji umów sprzedaży, w związku z tym mogą być przekazywane podmiotom
+                    odpowiedzialnym za dostawę zakupionych towarów.<br><br>
+                    3. Klienci mają prawo dostępu do treści swoich danych oraz do ich poprawiania. Sklep nie ponosi odpowiedzialności za
+                    błędy w obsłudze zamówienia lub innych dyspozycji Klienta, powstałe wskutek przekazania przez Klienta błędnych danych.<br><br>
+                    4. Administratorem danych osobowych jest właściciel Sklepu, czyli CSD Arkadiusz Musielewski z siedzibą we Wrocławiu, ul.
+                    Kłodzka 9/16, 50-539 Wrocław, wpisaną do CEIDG pod numerem REGON 360617747, NIP 665-284-42-72.<br><br>
+                    5. Klient ma prawo do żądania zaprzestania przetwarzania danych osobowych.  W przypadku, gdy udostępnione dane są
+                    niezbędne do korzystania z usług lub realizacji umowy sprzedaży, żądanie zaprzestania przetwarzania tych danych jest
+                    równoznaczne z zaprzestaniem świadczenia usług lub rezygnacją ze złożonego zamówienia.</p>
+
+                <h2>§7. Postanowienia końcowe:</h2>
+                <p><br><br>1. Regulamin obowiązuje od dnia 01 września 2016 roku. Treść regulaminu dostępna jest w siedzibie Usługodawcy i na stronie www.choiceunderwear.pl<br><br>
+                    2. Usługodawca zastrzega sobie prawo do zmiany Regulaminu, wszelkie zmiany wchodzą w życie w terminie wskazanym
+                    przez Usługodawcę, nie krótszym niż 14 dni od daty udostępnienia ich na stronie www.choiceundewear.pl . Zamówienia
+                    złożone przez Klienta przed datą wejścia w życie zmian do regulaminu są realizowane na podstawie zapisów obowiązujących
+                    w dniu złożenia zamówienia.<br><br>
+                    3. W sprawach nieuregulowanych w Regulaminie zastosowanie mają przepisy prawa polskiego, w szczególności Kodeksu
+                    cywilnego oraz ustawy o prawach konsumenta (Dz.U. z 2014 r., poz.827).</p>
+            </div>
+        </div>
+    </div>
+<div class="overlay--withtext js-overial-text"  style="display: none">
+    <div class="overlay__inner" style="height: 200px; min-height: 0; width: 50%; left: 25%">
+        <h2 style="text-align: center;margin-top: 20px;">Wysłalismy do Ciebie maila z dalszymi instrukcjami</h2>
+    </div>
+</div>
+<div class="spinner__overlay js-spinner">
+        <div class="spinner">
+        <span>
+            <div class="b1"></div>
+            <div class="b2"></div>
+            <div class="b3"></div>
+        </span>
+        </div>
+    </div>
+
+<div style="display: none">
+        <div id="regulamin">
+            <h1>Regulamin sklepu www.choiceunderwear.pl</h1>
+            <div>
+                <p>Sklep internetowy www.choiceunderwear.pl (dalej jako Sklep) jest prowadzony przez firmę CSD Arkadiusz
+                Musielewski z siedzibą we Wrocławiu, ul. Kłodzka 9/16, 50-536 Wrocław, wpisaną do CEIDG pod numerem REGON
+                360617747, NIP 665-284-42-76 (dalej jako Usługodawca).
+                CSD Arkadiusz Musielewski jest właścicielem i oficjalnym przedstawicielem marki CHOICE. Sprzedaż, promocja
+                oraz wykorzystanie nazwy, loga, zdjęć lub materiałów promocyjnych bez pisemnej zgody CSD Arkadiusz Musielewski
+                jest zabronione.</p>
+
+                <h2>§1. Postanowienia ogólne:</h2>
+                <p><br><br>1. Niniejszy Regulamin określa zasady korzystania ze Sklepu dostępnego pod adresem www.choiceunderwear.pl ,
+                który prowadzi sprzedaż detaliczną męskiej bielizny marki CHOICE za pośrednictwem sieci Internet.<br><br>
+                2. W ramach wymagań technicznych niezbędnych do współpracy z systemem teleinformatycznym, którym posługuję
+                się Usługodawca w celu realizacji zakupów, Klient powinien dysponować aktywnym kontem poczty elektronicznej
+                (e-mail) oraz urządzeniem podłączonym do sieci Internet, spełniającym następujące minimalne wymagania techniczne:
+                strona wspiera dwie najnowsze wersje wymienionych poniżej przeglądarek, posiadających włączoną technologię JavaScript
+                i pliki Cookies: Google Chrome, Mozilla Firefox, Microsoft Edge / Internet Explorer, Opera, Safari.  Uwaga: Strona
+                nie będzie funkcjonowała poprawnie na przeglądarkach Chrome 23, Firefox 23, Internet Explorer 9, Safari 6 lub
+                na ich starszych wersjach. Konieczne będzie zaktualizowanie przeglądarki w celu korzystania ze sklepu. Wymagany
+                system operacyjny: Windows 7 Service Pack 2 lub nowsze, MacOS 1.07 Lion lub nowsze, iOS 7 lub nowsze, Android 4 lub nowsze.</p>
+
+                <h2>§2. Zamówienia:</h2>
+                <p><br><br>1. Do złożenia zamówienia Klient musi zaakceptować Regulamin oraz wypełnić formularz zamówienia.<br><br>
+                2. Zamówienia od Klienta są przyjmowane przez Sklep przez całą dobę. Zamówienia złożone w dni robocze po
+                godzinie 19.00, w soboty, niedziele oraz święta rozpatrywane będą od godziny 9.00 następnego dnia roboczego.
+                Sklep realizuje zamówienia na terenie Polski.<br><br>
+                3. Informacje o towarach prezentowane na stronie www.choiceunderwear.pl nie stanowią oferty w rozumieniu
+                art.66 Kodeksu cywilnego, lecz są wyłącznie zaproszeniem do składania ofert.<br><br>
+                4. Klient, przesyłając do Sklepu zamówienie, składa ofertę zawarcia umowy sprzedaży zamawianych towarów w
+                Sklepie. Wysłane przez Sklep potwierdzenie przyjęcia zamówienia na podany przez Klienta adres e-mail stanowi
+                oświadczenie o przyjęciu oferty, o której mowa powyżej i stanowi jednocześnie potwierdzenie zawarcia umowy pomiędzy Klientem a Usługodawcą.<br><br>
+                5. W sprawach dotyczących zamówienia Sklep będzie kontaktował się z Klientem telefonicznie na numer podany
+                przy składaniu zamówienia lub w formie korespondencji elektronicznej na adres e-mail podany przy składaniu zamówienia.<br><br>
+                6. W przypadku niedostępności produktu oferowanego w Sklepie i zamówionego przez Klienta, Sklep poinformuje
+                o tym niezwłocznie Klienta w treści wysłanej korespondencji elektronicznej.<br><br>
+                7. Sklep ma prawo odmówić przyjęcia zamówienia, ograniczyć sposób płatności lub żądać przedpłaty w przypadku,
+                gdy zamówienie budzi wątpliwości co do prawdziwości i rzetelności podanych danych bądź sposobu zapłaty.<br><br>
+                8. Zmiana w zamówieniu lub jego anulowanie może być dokonane najpóźniej do momentu przekazania zamówienia do
+                wysyłki. Warunkiem wprowadzenia zmian w zamówieniu jest potwierdzenie za pośrednictwem e-maila prawidłowości
+                przesłanych przez Sklep zmian w zamówieniu.</p>
+
+                <h2>§3. Płatność i dostawa:</h2>
+                <p><br><br>1. Realizacja zamówienia następuje po potwierdzeniu otrzymania płatności na rachunek bankowy Usługodawcy w
+                przypadku płatności w inny sposób niż za pobraniem. W przypadku płatności za pobraniem realizacja następuje
+                niezwłocznie po złożeniu zamówienia przez Klienta.<br><br>
+                2. Dostępne sposoby płatności oraz koszty dostawy określone są w zakładce Płatność.<br><br>
+                3. Klient, który wybrał opcję płatności przelewem, jest zobowiązany do uiszczenia opłaty za złożone zamówienie
+                w terminie do 3 dni roboczych od daty złożenia zamówienia. W przeciwnym wypadku oferta Sklepu nie jest wiążąca
+                i zamówienie zostaje anulowane, o czym Klient zostanie poinformowany na wskazany przez siebie adres e-mail.<br><br>
+                4. Bezpośrednio po dokonaniu płatności albo wyborze sposobu płatności za pobraniem, Klient otrzymuje za pośrednictwem
+                poczty e-mail potwierdzenie nadania przesyłki.<br><br>
+                5. Przesyłka zawiera zamówiony towar wraz z paragonem fiskalnym lub, na życzenie Klienta, fakturą VAT.<br><br>
+                6. Zamówiony towar Sklep wysyła za pośrednictwem firmy wysyłkowej DPD.<br><br>
+                7. Czas realizacji zamówienia wynosi od 2 do 3 dni roboczych i jest uzależniony od dostępności danego produktu oraz
+                wybranej formy płatności.<br><br>
+                8. W przypadku, gdy Klient wprowadza zmiany w zamówieniach, powyższy termin biegnie na nowo od dnia potwierdzenia
+                zmiany przez Klienta.<br><br>
+                9. Klient, odbierając przesyłkę z zamówieniem, powinien sprawdzić stan przesyłki. W przypadku stwierdzenia zniszczenia
+                lub naruszenia opakowania istnieje możliwość sporządzenia protokołu szkody w obecności kuriera. Protokół szkody przesłany
+                do Sklepu wraz z reklamacją ułatwi jej rozpatrzenie.</p>
+
+                <h2>§4. Odstąpienie od umowy:</h2>
+                <p><br><br>1. Konsument, który zawarł umowę na odległość, ma prawo do odstąpienia od umowy bez podania przyczyny, składając stosowne
+                oświadczenie na piśmie w ciągu 14 dni. Termin ten jest terminem nieprzekraczalnym i liczy się od dnia wydania rzeczy.
+                Do zachowania tego terminu wystarczy wysłanie oświadczenia przed jego upływem na adres siedziby Usługodawcy.<br><br>
+                2. Zwrot powinien nastąpić niezwłocznie, nie później niż w terminie 14 dni. Zakupiony towar należy zwrócić Usługodawcy,
+                do zachowania tego terminu wystarczy wysłanie towaru przed jego upływem na adres Sklepu.<br><br>
+                3. Zwrot dokonanych przez Klienta płatności następuje niezwłocznie, nie później niż w terminie 14 dni od otrzymania oświadczenia
+                o odstąpieniu od umowy. W przypadku odstąpienia od umowy Klientowi przysługuje zwrot poniesionych pierwotnie kosztów dostawy
+                zakupionego towaru, jednak w kwocie nie wyższej niż koszt oferowanego przez Sklep najtańszego zwykłego sposobu dostarczenia
+                rzeczy. Za datę dokonania zwrotu płatności uznaje się datę obciążenia rachunku bankowego Usługodawcy.</p>
+
+                <h2>§5. Reklamacje:</h2>
+                <p><br><br>1. Sklep zobowiązuje się do dostarczenia zamówionego towaru bez wad, w terminach określonych powyżej.<br><br>
+                2. Za wadliwy towar odpowiada Sklep w ciągu 24 miesięcy od daty doręczenia przesyłki.<br><br>
+                3. Klient zobowiązany jest do odesłania na własny koszt wadliwego towaru na adres Sklepu.<br><br>
+                4. W przypadku uznania reklamacji, Sklep zwraca Klientowi koszt dostarczenia towaru. Koszt odesłania produktu do Klienta ponosi Sklep.<br><br>
+                5. Termin na ustosunkowanie się do reklamacji wynosi 14 dni. Brak ustosunkowania się w tym terminie oznacza uznanie reklamacji za uzasadnioną.</p>
+
+                <h2>§6. Polityka prywatności oraz ochrona danych osobowych:</h2>
+                <p><br><br>1. Przed złożeniem zamówienia Klient wyraża zgodę na przetwarzanie podanych danych osobowych przez Usługodawcę w celu
+                realizacji zamówienia. Podanie danych osobowych i wyrażenie zgody na ich przetwarzanie jest dobrowolne, jednak konieczne
+                w celu zawarcia i realizacji umowy sprzedaży oraz świadczenia usług.<br><br>
+                2. Dane osobowe wykorzystywane są w celu realizacji umów sprzedaży, w związku z tym mogą być przekazywane podmiotom
+                odpowiedzialnym za dostawę zakupionych towarów.<br><br>
+                3. Klienci mają prawo dostępu do treści swoich danych oraz do ich poprawiania. Sklep nie ponosi odpowiedzialności za
+                błędy w obsłudze zamówienia lub innych dyspozycji Klienta, powstałe wskutek przekazania przez Klienta błędnych danych.<br><br>
+                4. Administratorem danych osobowych jest właściciel Sklepu, czyli CSD Arkadiusz Musielewski z siedzibą we Wrocławiu, ul.
+                Kłodzka 9/16, 50-539 Wrocław, wpisaną do CEIDG pod numerem REGON 360617747, NIP 665-284-42-72.<br><br>
+                5. Klient ma prawo do żądania zaprzestania przetwarzania danych osobowych.  W przypadku, gdy udostępnione dane są
+                niezbędne do korzystania z usług lub realizacji umowy sprzedaży, żądanie zaprzestania przetwarzania tych danych jest
+                równoznaczne z zaprzestaniem świadczenia usług lub rezygnacją ze złożonego zamówienia.</p>
+
+                <h2>§7. Postanowienia końcowe:</h2>
+                <p><br><br>1. Regulamin obowiązuje od dnia 01 września 2016 roku. Treść regulaminu dostępna jest w siedzibie Usługodawcy i na stronie www.choiceunderwear.pl<br><br>
+                2. Usługodawca zastrzega sobie prawo do zmiany Regulaminu, wszelkie zmiany wchodzą w życie w terminie wskazanym
+                przez Usługodawcę, nie krótszym niż 14 dni od daty udostępnienia ich na stronie www.choiceundewear.pl . Zamówienia
+                złożone przez Klienta przed datą wejścia w życie zmian do regulaminu są realizowane na podstawie zapisów obowiązujących
+                w dniu złożenia zamówienia.<br><br>
+                3. W sprawach nieuregulowanych w Regulaminie zastosowanie mają przepisy prawa polskiego, w szczególności Kodeksu
+                cywilnego oraz ustawy o prawach konsumenta (Dz.U. z 2014 r., poz.827).</p>
+            </div>
+        </div>
+        <div id="platnosci">
+            <h1>Formy płatności</h1>
+            <div>
+                <p>1. Przelew bankowy (tradycyjny):<br>
+                    Nr konta bankowego: 67 1050 1575 1000 0092 2301 4425
+                    Odbiorca: CSD Arkadiusz Musielewski, ul. Kłodzka 9/16, 50-536 Wrocław
+                    Tytuł przelewu to numer zamówienia</p>
+                <p>Przelew internetowy:<br>
+                    e-przelewy realizowane są za pośrednictwem Przelewy 24</p>
+                <p>3. Płatność przy odbiorze:<br>
+                    Przesyłki pobraniowe realizujemy wyłącznie za pośrednictwem DPD</p>
+            </div>
+        </div>
+        <div id="wymiana">
+            <h1>Formularz wymiany zwrotu</h1>
+            <div>
+                <p>Do pobrania</p>
+                <p><a href="./documents/formularz_zwrotu.docx">Pobierz formularz</a></p>
+            </div>
+        </div>
+        <div id="dostawy">
+            <h2>Koszty dostawy:</h2>
+            <p>Kurier DPD standard – 16 PLN<br>
+            Kurier DPD za pobraniem – 20 PLN</p>
+        </div>
+        <div id="realizacja">
+            <h2>Czas realizacji dostawy:</h2>
+            <p>Kurier DPD – czas doręczenia 1-2 dni robocze od daty wysyłki.</p>
+            <p>Klient otrzymuje numer listu przewozowego i ma możliwość samodzielnego
+            śledzenia przesyłki na stronie internetowej dostawcy. Przesyłki są
+            doręczane w ciągu dnia, w godzinach pracy kurierów. Firmy kurierskie
+            nie oferują możliwości wybrania konkretnej godziny doręczenia. Zgodnie
+            z regulaminami firm kurierskich, kurierzy nie mają obowiązku kontaktu
+            telefonicznego przed doręczeniem przesyłki. Kurierzy nie zostawiają awiza.
+            Klient ma w każdej chwili prawo do kontaktu z infolinią firmy kurierskiej i
+            umówienie się na dogodną godzinę doręczenia - w ramach godzin pracy kurierów.</p>
+        </div>
+        <div id="zakupy">
+            <div accesskey="order" class="js-order-proces order__allforms">
+                <div class="row">
+                    <div class="col-sm-4 col-xs-12 order__section js-order-section transition-all-500" data-dest=".js-pay-and-signin">
+                        <div class="order__icon"><i class="icon-create-group-button transition-all-500"></i></div>
+                        <h3>Zarejestruj się</h3>
+                    </div>
+                    <div class="col-sm-4 col-xs-12 order__section js-order-section transition-all-500" data-dest=".js-pay-and-login">
+                        <div class="order__icon"><i class="icon-login transition-all-500"></i></div>
+                        <h3>Zaloguj się</h3>
+                    </div>
+                    <div class="col-sm-4 col-xs-12 order__section js-order-section transition-all-500" data-dest=".js-pay-and-order">
+                        <div class="order__icon"><i class="icon-add-to-cart transition-all-500"></i></div>
+                        <h3>Kup bez rejestracji</h3>
+                    </div>
+                    <div class="col-sm-8 col-xs-12 order__section--last transition-all-500 js-pay-section" style="display: none">
+                        <div class="row">
+                            <div class="col-sm-12 col-xs-12 js-pay-and-signin js-pay">
+                                <form class="js-register-form">
+                                    <div class="row">
+                                        <input type="hidden" name="try-register">
+                                        <div class="col-sm-12">
+                                            <div class="form__input">
+                                                <input placeholder="Email" type="email" name="email" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form__input">
+                                                <input placeholder="Hasło" type="password" name="pass" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form__input">
+                                                <input placeholder="Powtórz Hasło" type="password" name="pass-2" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form__input">
+                                                <input placeholder="Imię" type="text" name="name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form__input">
+                                                <input placeholder="Nazwisko" type="text" name="surname" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form__input">
+                                                <input placeholder="Ulica" type="text" name="street" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form__input">
+                                                <input placeholder="Nr Domu/Mieszkania" type="text" name="house_nr" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form__input">
+                                                <input placeholder="Miasto" type="text" name="city" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form__input">
+                                                <input placeholder="Kod pocztowy" type="text" name="postcode" required>
+                                            </div>
+                                        </div>
+                                        {#<div class="col-sm-6">#}
+                                            {#<div class="form__input">#}
+                                                {#<input placeholder="Data urodzenia"  id="simple-calendar" type="text" name="postcode">#}
+                                            {#</div>#}
+                                        {#</div>#}
+                                        <div class="col-sm-6 col-sm-push-6">
+                                            <div class="form__btn">
+                                                <button type="submit" class="btn btn--login transition-all-500">Zarejestruj się</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-sm-12 col-xs-12 js-pay-and-login js-pay">
+                                <form class="js-login-form" data-shop-open="true">
+                                    <input type="hidden" name="try-login">
+                                    <input type="hidden" name="opened">
+                                    <div class="form__input">
+                                        <input placeholder="Email" type="email" name="email" required>
+                                    </div>
+                                    <div class="form__input">
+                                        <input placeholder="Hasło" type="password" name="pass" required>
+                                    </div>
+                                    <div class="form__btn">
+                                        <button type="submit" class="btn btn--login transition-all-500">Zaloguj się</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-sm-12 col-xs-12 js-pay-and-order js-pay">
+                                <form class="js-withoutlogin-form">
+                                    <input type="hidden" name="try-pay">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form__input">
+                                                <input placeholder="Email" type="email" name="email" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form__input">
+                                                <input placeholder="Imię" type="text" name="name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form__input">
+                                                <input placeholder="Nazwisko" type="text" name="surname" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form__input">
+                                                <input placeholder="Ulica" type="text" name="street" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form__input">
+                                                <input placeholder="Nr Domu/Mieszkania" type="text" name="house_nr" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form__input">
+                                                <input placeholder="Miasto" type="text" name="city" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form__input">
+                                                <input placeholder="Kod pocztowy" type="text" name="postcode" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-xs-12">
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-6">
+                                                    <h2 class="order__subheader">Płatność</h2>
+                                                    <div class="checkbox--group radio">
+                                                        <input type="radio" name="transport" data-value="16" id="transport-1" value="16" class="js-transport-price" required>
+                                                        <label for="transport-1">Przedpłata <span>(16 PLN)</span></label>
+                                                    </div>
+                                                    <div class="checkbox--group radio">
+                                                        <input type="radio" name="transport" data-value="25" id="transport-2" value="20" class="js-transport-price" required>
+                                                        <label for="transport-2">Za pobraniem <span>(20 PLN)</span></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6">
+                                                    <h2 class="order__subheader">Do zapłaty</h2>
+                                                    <div class="col-sm-12 col-xs-12">
+                                                        <div class="order__promotion--name"></div>
+                                                        <div class="order__price order__price--final"><span class="order__promotion__price js-general-price js-actual-price">{{ price }}</span>PLN</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-sm-push-6 checkbox">
+                                            <div class="form__btn">
+                                                <button type="submit" class="btn btn--login transition-all-500">Zamów i zapłać</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-xs-12 order__noneregistry--checkbox">
+                                            <div class="order__checkbox checkbox">
+                                                <input type="checkbox" name="email_approve" id="email_approve_checkbox" checked>
+                                                <label for="email_approve_checkbox">Wyrażam zgodę na przetwarzanie moich onformacji w celach promocyjnych</label>
+                                            </div>
+                                            <div class="order__checkbox checkbox">
+                                                <input type="checkbox" name="terms_conditions" id="terms_conditions_checkbox" required>
+                                                <label for="terms_conditions_checkbox">Informuję że zapoznałem się z <span class="js-overlay-terms" style="font-weight: 500; cursor: pointer; color: #418edd">regulaminem</span>*</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="zamowienia">
+            <div class="js-order-inside">
+
+            </div>
+        </div>
+        {% block description %}{% endblock %}
+    </div>
+
+<script src="scripts/jquery-3.0.0.min.js"></script>
+{% block scripts %}{% endblock %}
+<script src="scripts/datepicker.js"></script>
+<!-- REVOLUTION JS FILES -->
+<script type="text/javascript" src="scripts/revolution/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="scripts/revolution/jquery.themepunch.revolution.min.js"></script>
+
+<!-- SLIDER REVOLUTION 5.0 EXTENSIONS
+        (Load Extensions only on Local File Systems !
+         The following part can be removed on Server for On Demand Loading) -->
+<script type="text/javascript" src="scripts/revolution/extensions/revolution.extension.actions.min.js"></script>
+<script type="text/javascript" src="scripts/revolution/extensions/revolution.extension.carousel.min.js"></script>
+<script type="text/javascript" src="scripts/revolution/extensions/revolution.extension.kenburn.min.js"></script>
+<script type="text/javascript" src="scripts/revolution/extensions/revolution.extension.layeranimation.min.js"></script>
+<script type="text/javascript" src="scripts/revolution/extensions/revolution.extension.migration.min.js"></script>
+<script type="text/javascript" src="scripts/revolution/extensions/revolution.extension.navigation.min.js"></script>
+<script type="text/javascript" src="scripts/revolution/extensions/revolution.extension.parallax.min.js"></script>
+<script type="text/javascript" src="scripts/revolution/extensions/revolution.extension.slideanims.min.js"></script>
+<script type="text/javascript" src="scripts/revolution/extensions/revolution.extension.video.min.js"></script>
+<script src="scripts/main.js"></script>
+
+<script type="text/javascript">
+    var revapi202;
+    $(document).ready(function() {
+        if ($("#rev_slider_202_1").revolution == undefined) {
+            revslider_showDoubleJqueryError("#rev_slider_202_1");
+        } else {
+            revapi202 = $("#rev_slider_202_1").show().revolution({
+                sliderType: "standard",
+                jsFileLocation: "../../revolution/js/",
+                sliderLayout: "fullscreen",
+                dottedOverlay: "none",
+                delay: 9000,
+                navigation: {
+                    keyboardNavigation: "off",
+                    keyboard_direction: "horizontal",
+                    mouseScrollNavigation: "off",
+                    onHoverStop: "off",
+                    touch: {
+                        touchenabled: "on",
+                        swipe_threshold: 75,
+                        swipe_min_touches: 50,
+                        swipe_direction: "horizontal",
+                        drag_block_vertical: false
+                    },
+                    bullets: {
+                        enable: true,
+                        hide_onmobile: true,
+                        hide_under: 800,
+                        style: "zeus",
+                        hide_onleave: false,
+                        direction: "horizontal",
+                        h_align: "center",
+                        v_align: "bottom",
+                        h_offset: 0,
+                        v_offset: 30,
+                        space: 5,
+                        tmp: '<span class="tp-bullet-image"></span><span class="tp-bullet-imageoverlay"></span><span class="tp-bullet-title">{{title}}</span>'
+                    }
+                },
+                responsiveLevels: [1240, 1024, 778, 480],
+                visibilityLevels: [1240, 1024, 778, 480],
+                gridwidth: [1240, 1024, 778, 480],
+                gridheight: [868, 768, 960, 720],
+                lazyType: "none",
+                parallax: {
+                    type: "scroll",
+                    origo: "slidercenter",
+                    speed: 1000,
+                    levels: [5, 10, 15, 20, 25, 30, 35, 40, 45, 46, 47, 48, 49, 50, 100, 55]
+                },
+                shadow: 0,
+                spinner: "off",
+                stopLoop: "on",
+                stopAfterLoops: 0,
+                stopAtSlide: 1,
+                shuffle: "off",
+                autoHeight: "off",
+                fullScreenAutoWidth: "off",
+                fullScreenAlignForce: "off",
+                fullScreenOffsetContainer: "",
+                fullScreenOffset: "60px",
+                disableProgressBar: "on",
+                hideThumbsOnMobile: "off",
+                hideSliderAtLimit: 0,
+                hideCaptionAtLimit: 0,
+                hideAllCaptionAtLilmit: 0,
+                debugMode: false,
+                fallbacks: {
+                    simplifyAll: "off",
+                    nextSlideOnWindowFocus: "off",
+                    disableFocusListener: false,
+                }
+            });
+        }
+    }); /*ready*/
+</script>
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-83983363-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+</html>

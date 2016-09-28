@@ -1,0 +1,16 @@
+.footer, .content, .header{
+  width: 100%;
+  & > *{
+    width: inherit;
+  }
+}
+
+.content{
+  z-index: 0;
+  position: relative;
+}
+
+.header{
+  z-index: 2;
+  position: fixed;
+}
